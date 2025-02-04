@@ -1,6 +1,7 @@
 import Helper from "@/utils/helper";
 import { cn } from "@/utils/utils";
 import React from "react";
+import Text from "./Text";
 
 type Props = {
 	value: number;
@@ -10,10 +11,9 @@ type Props = {
 
 export default function Money({ value, className, minus }: Props) {
 	return (
-		<strong
-			className={cn("font-inter	text-xs text-[#d72229] font-bold	", className)}>
+		<Text.span variant={"primary"} className={cn("font-bold	", className)}>
 			{minus && minus}
 			{Helper.moneyFormat(value)}đ
-		</strong>
+		</Text.span>
 	);
 }

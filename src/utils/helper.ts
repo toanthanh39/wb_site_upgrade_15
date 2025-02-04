@@ -138,7 +138,7 @@ class Helper {
 	}
 
 	static isDebug() {
-		return process.env.REACT_APP_IS_DEBUG === "debug" || false;
+		return process.env.NEXT_PUBLIC_IS_DEBUG === "debug" || false;
 	}
 
 	static changeTheme = (theme: "theme1" | "theme2" | "") => {

@@ -21,6 +21,17 @@ const nextConfig: NextConfig = {
 		REACT_APP_BASE_URL_V2: process.env.REACT_APP_BASE_URL_V2,
 	},
 
+	compiler: {
+		removeConsole: process.env.NODE_ENV === "production" ? true : false,
+	},
+
+	experimental: {
+		staleTimes: {
+			dynamic: 60,
+			static: 180,
+		},
+	},
+
 	images: {
 		formats: ["image/avif", "image/webp"],
 		remotePatterns: [
