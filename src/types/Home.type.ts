@@ -16,3 +16,16 @@ export type SectionJson = {
 export type SectionCollectionInfor = {
 	params: ProductFilter;
 };
+
+export type BannerHomeData = {
+	id: number;
+	image: string;
+	image_mobile: string;
+	title: string;
+	link: string;
+	width: number;
+	height: number;
+	alt: string;
+	from_time?: number;
+	to_time?: number;
+};

@@ -16,15 +16,13 @@ function useNotfication() {
 				queryKey: ["notfications", filter.collection_id],
 				queryFn: async () => {
 					const c_id = filter.collection_id as string;
-					const { data } = await getStories({
+					return await getStories({
 						collection_id: c_id,
 						page: 1,
 						tags: filter.tags,
 					});
-
-					return data;
 				},
-				staleTime: Infinity,
+				staleTime: STALE_TIME,
 			};
 		}),
 	});
@@ -33,10 +31,10 @@ function useNotfication() {
 		queries.forEach((query) => query.refetch());
 	};
 	const results = {
-		new: (queries[0].data?.items || []) as StoryJson[],
-		recent: (queries[1].data?.items || []) as StoryJson[],
-		total: ((queries[0].data?.total || 0) +
-			(queries[1].data?.total || 0)) as number,
+		new: (queries[0]?.data?.items ?? []) as StoryJson[],
+		recent: (queries[1].data?.items ?? []) as StoryJson[],
+		total: ((queries[0].data?.total ?? 0) +
+			(queries[1].data?.total ?? 0)) as number,
 	};
 
 	return {

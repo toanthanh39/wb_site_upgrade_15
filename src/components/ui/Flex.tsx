@@ -14,8 +14,6 @@ const variants = cva("flex w-full", {
 			end: "justify-end",
 			start: "justify-start",
 			between: "justify-between",
-
-			// between:"justify-between"
 		},
 		align: {
 			center: "items-center",

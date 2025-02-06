@@ -14,8 +14,8 @@ export async function detectLangForServer() {
 
 export async function detectTimeServer() {
 	try {
-		const _headers = await headers();
-		return Number(_headers.get("executionAt"));
+		// const _headers = await headers();
+		return Math.floor(Number(Date.now() / 1000));
 	} catch (error) {
 		return 0;
 	}

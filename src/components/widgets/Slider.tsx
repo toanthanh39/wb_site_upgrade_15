@@ -1,6 +1,8 @@
 // components/Slider.js
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
 import "swiper/css/pagination";
 
 import "swiper/css/navigation";
@@ -18,12 +20,14 @@ import {
 	Parallax,
 	A11y,
 	FreeMode,
+	Autoplay,
 } from "swiper/modules";
 import { SwiperProps } from "swiper/react";
+import { JSX } from "react";
 
 type SliderProps<D> = SwiperProps & {
 	dataSource: D[];
-	render: (item: D, index: number) => React.ReactNode;
+	render: (item: D, index: number) => React.ReactNode | JSX.Element;
 };
 
 export default function Slider<D>({
@@ -43,6 +47,7 @@ export default function Slider<D>({
 				Parallax,
 				A11y,
 				FreeMode,
+				Autoplay,
 			]}
 			pagination={{ clickable: true }}
 			// onSlideChange={() => console.log("slide change")}

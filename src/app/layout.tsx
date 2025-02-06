@@ -7,7 +7,6 @@ import {
 	Noto_Serif_Display,
 } from "next/font/google";
 import "./globals.css";
-import "swiper/css";
 import RootProvider from "@/lib/providers/RootProvider";
 
 const geistSans = Geist({
@@ -49,7 +48,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${inter.variable} ${notoSans.variable} ${notoSerifDisplay.variable} antialiased  font-inter w-screen`}>
+				className={`${inter.variable} ${notoSans.variable} ${notoSerifDisplay.variable} antialiased  font-inter w-screen overflow-x-hidden`}>
+				<div className="animate-modal-down"></div>
 				<RootProvider>{children}</RootProvider>
 			</body>
 		</html>

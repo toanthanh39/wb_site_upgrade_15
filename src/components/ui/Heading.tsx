@@ -18,10 +18,15 @@ const hVariants = cva("", {
 			h4: "text-lg",
 			h5: "text-base",
 		},
+		weight: {
+			default: "",
+			bold: "font-bold",
+		},
 	},
 	defaultVariants: {
 		variant: "default",
 		size: "h1",
+		weight: "default",
 	},
 });
 
@@ -36,6 +41,7 @@ export default function Heading({
 	className,
 	children,
 	level,
+	weight,
 	...props
 }: HeadingProps) {
 	const Comp = `h${level}`;
@@ -43,7 +49,7 @@ export default function Heading({
 		Comp,
 		{
 			...props,
-			className: cn(hVariants({ variant, size, className })),
+			className: cn(hVariants({ variant, size, weight, className })),
 		},
 		children
 	);

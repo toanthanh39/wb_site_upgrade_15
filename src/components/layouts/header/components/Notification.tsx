@@ -23,23 +23,22 @@ export default function Notification({ className }: ComProps) {
 						<Text.p className="mb-2" variant="secondary">
 							Thông báo mới
 						</Text.p>
-						<Flex direction="col" gap={4}>
+						<Flex direction="col" gap={4} align="start">
 							{results.new.map((item) => {
 								return (
-									<Flex key={item.id} align="start" gap={4}>
-										<LinkElement
-											href={
-												"/collections/" + item.collections?.[0]?.handle + ""
-											}
-											prefetch={false}>
+									<LinkElement
+										key={item.id}
+										href={"/collections/" + item.collections?.[0]?.handle + ""}
+										prefetch={false}>
+										<Flex key={item.id} align="start" gap={4} justify="start">
 											<CustomImage
 												width={100}
 												height={100}
 												src={item.images?.[0]?.url || ""}
 												alt={item.handle}></CustomImage>
 											<Text.p>{item.title}</Text.p>
-										</LinkElement>
-									</Flex>
+										</Flex>
+									</LinkElement>
 								);
 							})}
 						</Flex>
@@ -48,22 +47,22 @@ export default function Notification({ className }: ComProps) {
 						<Text.p className="mb-2" variant="secondary">
 							Thông báo gần đây
 						</Text.p>
-						<Flex direction="col" gap={4}>
+						<Flex direction="col" gap={4} align="start">
 							{results.recent.map((item) => {
 								return (
-									<Flex key={item.id} align="start" gap={4} justify="start">
-										{/* process.env.NEXT_PUBLIC_BASE_URL */}
-										{/* <LinkElement
+									<LinkElement
+										key={item.id}
 										href={"/collections/" + item.collections?.[0]?.handle + ""}
-										prefetch={false}> */}
-										<CustomImage
-											width={100}
-											height={100}
-											src={item.images?.[0]?.url || ""}
-											alt={item.handle}></CustomImage>
-										<Text.p>{item.title}</Text.p>
-										{/* </LinkElement> */}
-									</Flex>
+										prefetch={false}>
+										<Flex key={item.id} align="start" gap={4} justify="start">
+											<CustomImage
+												width={100}
+												height={100}
+												src={item.images?.[0]?.url || ""}
+												alt={item.handle}></CustomImage>
+											<Text.p>{item.title}</Text.p>
+										</Flex>
+									</LinkElement>
 								);
 							})}
 						</Flex>

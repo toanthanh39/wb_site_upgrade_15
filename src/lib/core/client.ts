@@ -4,8 +4,10 @@ import { AxiosRequestConfig, AxiosResponse, Method } from "axios";
 interface Options {
 	url: string;
 	method: Lowercase<Method>;
-	axiosConfig: AxiosConfig;
+	axiosConfig?: AxiosConfig;
 }
+
+interface Data extends Object {}
 
 type AxiosConfig = Omit<AxiosRequestConfig, "method" | "url">;
 
@@ -26,47 +28,46 @@ const processUrl = (url: string) => {
 };
 
 async function client<T>(options: Options) {
-	const { axiosConfig } = options;
+	const { axiosConfig, url } = options;
 
 	const axiosOptionsInstance: AxiosRequestConfig = {
-		...axiosConfig,
-		headers: {
-			"Cache-Control": "no-cache",
-			...axiosConfig?.headers,
-		},
+		url: processUrl(url),
+		...mergeConfig(axiosConfig),
 	};
 	const response = await AxiosInstance<T>(axiosOptionsInstance);
-	return response;
+	return response.data;
 }
 
 // Gán các phương thức HTTP của Axios cho client
-client.get = <T>(
-	url: string,
-	config?: AxiosConfig
-): Promise<AxiosResponse<T>> => {
-	return AxiosInstance.get<T>(processUrl(url), mergeConfig(config));
+client.get = <T>(url: string, config?: AxiosConfig) => {
+	return client<T>({ axiosConfig: config, method: "get", url });
 };
 
 client.post = <T>(
 	url: string,
-	data?: any,
-	config?: AxiosConfig
-): Promise<AxiosResponse<T>> => {
-	return AxiosInstance.post<T>(processUrl(url), data, mergeConfig(config));
+	data?: Data,
+	config?: Omit<AxiosConfig, "data">
+) => {
+	return client<T>({
+		axiosConfig: { ...config, data: data },
+		method: "post",
+		url,
+	});
 };
 
 client.put = <T>(
 	url: string,
-	data?: any,
-	config?: AxiosConfig
-): Promise<AxiosResponse<T>> => {
-	return AxiosInstance.put<T>(processUrl(url), data, mergeConfig(config));
+	data?: Data,
+	config?: Omit<AxiosConfig, "data">
+) => {
+	return client<T>({
+		axiosConfig: { ...config, data: data },
+		method: "put",
+		url,
+	});
 };
 
-client.delete = <T>(
-	url: string,
-	config?: AxiosConfig
-): Promise<AxiosResponse<T>> => {
-	return AxiosInstance.delete<T>(processUrl(url), mergeConfig(config));
+client.delete = <T>(url: string, config?: AxiosConfig) => {
+	return client<T>({ axiosConfig: config, method: "delete", url });
 };
 export default client;

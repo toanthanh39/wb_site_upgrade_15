@@ -97,7 +97,7 @@ server.post = async <T>(
 	config?: Config
 ): Promise<T> => {
 	const response = await server<T>({
-		url: processUrl(url, config),
+		url: url,
 		method: "POST",
 		config: {
 			...mergeConfig(config),

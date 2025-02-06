@@ -15,13 +15,13 @@ export const getSettingServer = async <D>(key: string, config?: Config) => {
 		domain: DOMAIN,
 		lang: lang,
 	};
-	return server.get<SettingJson<D>>(URL_PUBLIC, {
+	return server.get<SettingJson<D>>(URL_PUBLIC + "/" + key, {
 		...config,
 		cache: "force-cache",
 		next: {
 			revalidate: TIME_CACHE,
 		},
-		params: { params },
+		params: { ...Helper.convertParams(params) },
 	});
 };
 

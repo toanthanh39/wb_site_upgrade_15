@@ -112,5 +112,21 @@ export default {
 			center: true,
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function ({ addUtilities }: { addUtilities: any }) {
+			addUtilities({
+				".hide-scroll-bar": {
+					/* Ẩn thanh cuộn cho trình duyệt Webkit (Chrome/Safari) */
+					"::-webkit-scrollbar": {
+						display: "none",
+					},
+					/* Firefox */
+					"scrollbar-width": "none",
+					/* IE và Edge */
+					"-ms-overflow-style": "none",
+				},
+			});
+		},
+	],
 } satisfies Config;

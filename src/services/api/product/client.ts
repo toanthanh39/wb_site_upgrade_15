@@ -1,5 +1,4 @@
 import client from "@/lib/core/client";
-import server from "@/lib/core/server";
 import { ProductFilter, ProductListJson } from "@/types/Product.type";
 import Helper from "@/utils/helper";
 
@@ -18,3 +17,6 @@ export const getProductsAdmin = async (filter: ProductFilter) => {
 	});
 };
 
+export const createProductsAdmin = async (filter: ProductFilter) => {
+	return client.post<ProductListJson>(URL_ADMIN, {});
+};
