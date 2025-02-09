@@ -3,14 +3,11 @@ import LinkElement from "@/components/ui/Link";
 import Heading from "@/components/ui/Heading";
 import { Button } from "@/components/ui/Button";
 import ProductSlider from "./ProductSlider";
-
-// const ProductSlider = dynamic(() => import("./ProductSlider"), {
-// 	loading(loadingProps) {
-// 		return <div className="fl"> Đang tải</div>;
-// 	},
-// });
-
-type Props = {
+import { ComProps } from "@/types/Component";
+import { cn } from "@/utils/utils";
+import { Suspense } from "react";
+import Flex from "@/components/ui/Flex";
+type Props = ComProps & {
 	title?: string;
 	link?: string;
 	more?: {
@@ -29,24 +26,33 @@ async function getListProductServer() {
 	}
 }
 
-export default async function ProductCollection({ title, link, more }: Props) {
+export default async function ProductCollection({
+	title,
+	link,
+	more,
+	className,
+}: Props) {
 	const data = await getListProductServer();
 	return (
-		<section className="relative w-full">
+		<section className={cn("relative w-full  ", className)}>
 			{title && link && (
 				<LinkElement href={link} className="mb-4">
-					<Heading level={1} variant="productCollection">
+					<Heading className=" " level={1} variant="productCollection">
 						{title}
 					</Heading>
 				</LinkElement>
 			)}
-
 			<ProductSlider dataSource={data} />
-
 			{more && (
-				<Button className="mx-auto block" variant="outline">
-					{more.title}
-				</Button>
+				<Flex gap={2}>
+					<Button className="mx-auto block" variant="default">
+						{more.title}
+					</Button>
+
+					<Button className="mx-auto block" variant="outline">
+						{more.title}
+					</Button>
+				</Flex>
 			)}
 		</section>
 	);

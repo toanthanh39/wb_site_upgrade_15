@@ -7,7 +7,7 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<Main>
+			<Main useContainer={false}>
 				<Body />
 			</Main>
 			<Footer />

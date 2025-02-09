@@ -16,16 +16,16 @@ export const getSettingServer = async <D>(key: string, config?: Config) => {
 		lang: lang,
 	};
 	return server.get<SettingJson<D>>(URL_PUBLIC + "/" + key, {
-		...config,
 		cache: "force-cache",
 		next: {
 			revalidate: TIME_CACHE,
 		},
+		...config,
 		params: { ...Helper.convertParams(params) },
 	});
 };
 
-export async function getMultiSettingServer<V>(
+export async function getMultiSettingServer<D>(
 	keys: string,
 	config?: Config,
 	isRoot?: boolean
@@ -36,12 +36,12 @@ export async function getMultiSettingServer<V>(
 		keys: keys,
 		lang: langServer,
 	};
-	return server.get<SettingCollectionJson<V>>(URL_PUBLIC, {
-		...config,
+	return server.get<SettingCollectionJson<D>>(URL_PUBLIC, {
 		cache: "force-cache",
 		next: {
 			revalidate: TIME_CACHE,
 		},
+		...config,
 		params: { ...Helper.convertParams(params) },
 	});
 }

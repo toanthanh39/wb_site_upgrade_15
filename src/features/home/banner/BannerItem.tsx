@@ -10,19 +10,37 @@ type Props = {
 export default function BannerItem({ data }: Props) {
 	return (
 		<LinkElement href={data.link} key={data.id}>
-			<picture>
-				<source media="(max-width:767px)" srcSet={data.image_mobile} />
+			{/* <picture>
+				<source
+					media="(max-width:767px)"
+					srcSet={data.image_mobile + "?format=webp"}
+					type="image/webp"
+				/>
 
-				<source media="(min-width:767px)" srcSet={data.image} />
+				<source
+					media="(min-width:767px)"
+					srcSet={data.image + "?format=webp"}
+					type="image/webp"
+				/>
 
-				<CustomImage
-					alt={data.alt}
-					src={data.image}
-					loading="eager"
-					height={52}
-					width={100}
-					layout="responsive"></CustomImage>
-			</picture>
+			
+			</picture> */}
+			<CustomImage
+				className=" md:hidden"
+				alt={data.alt}
+				src={data.image_mobile}
+				loading="eager"
+				height={1}
+				width={1}
+				layout="responsive"></CustomImage>
+			<CustomImage
+				className="hidden md:block"
+				alt={data.alt}
+				src={data.image}
+				loading="eager"
+				height={52}
+				width={100}
+				layout="responsive"></CustomImage>
 		</LinkElement>
 	);
 }

@@ -11,7 +11,7 @@ export interface LinkElementProps
 	className?: string;
 }
 
-const linkVariants = cva("inline-block", {
+const linkVariants = cva("inline-block hover:text-colors-red-5", {
 	variants: {
 		variant: {
 			default: "text-colors-gray-5",

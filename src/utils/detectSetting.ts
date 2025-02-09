@@ -1,9 +1,15 @@
 import { SettingJson } from "@/types/Setting.type";
 
-export default function detectSetting<D, R>(
+export default function detectSetting<R>(
 	key: string,
-	data: SettingJson<unknown> | SettingJson<unknown>[]
+	data:
+		| SettingJson<unknown>
+		| SettingJson<unknown>[]
+		| SettingJson<R>[]
+		| SettingJson<R>
+		| undefined
 ) {
+	if (!data) return;
 	if (Array.isArray(data)) {
 		return data.find((item) => item.key === key) as SettingJson<R>;
 	}

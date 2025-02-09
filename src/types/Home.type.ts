@@ -29,3 +29,14 @@ export type BannerHomeData = {
 	from_time?: number;
 	to_time?: number;
 };
+
+export type BrandHomeData = {
+	id: number;
+	image: string;
+	image_mobile: string;
+	width: number;
+	height: number;
+	link: string;
+	title: string;
+	alt: string;
+};

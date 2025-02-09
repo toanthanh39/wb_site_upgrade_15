@@ -46,10 +46,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" data-theme="dark">
 			<body
-				className={`${inter.variable} ${notoSans.variable} ${notoSerifDisplay.variable} antialiased  font-inter w-screen overflow-x-hidden`}>
-				<div className="animate-modal-down"></div>
+				className={`${inter.variable} ${notoSans.variable} ${notoSerifDisplay.variable} antialiased  font-inter w-screen overflow-x-hidden dark:bg-black`}>
 				<RootProvider>{children}</RootProvider>
 			</body>
 		</html>

@@ -9,6 +9,8 @@ import detectSetting from "@/utils/detectSetting";
 import Helper from "@/utils/helper";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
+import { BrandHome } from "../brand";
+import BrandHomeSkeleton from "../brand/BrandHomeSkeleton";
 
 const keySettings = [
 	SettingConst.home.setting_id_store_web_shop,
@@ -71,13 +73,16 @@ export default async function HomeSections() {
 	const data = await getDataServer();
 	const timeServer = await detectTimeServer();
 
-	const dataSections = detectSetting<SectionJson[] | number, SectionJson[]>(
+	const dataSections = detectSetting<SectionJson[]>(
 		SettingConst.home.settings_website_namperfume_net,
 		data
 	)?.value;
 
 	return (
-		<Flex direction="col" justify="start" gap={32}>
+		<Flex className="container" direction="col" justify="start" gap={32}>
+			<Suspense fallback={<BrandHomeSkeleton />}>
+				<BrandHome />
+			</Suspense>
 			{dataSections &&
 				dataSections.map((item, index) =>
 					renderSection(item, index, timeServer)

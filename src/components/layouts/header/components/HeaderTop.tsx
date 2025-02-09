@@ -4,6 +4,7 @@ import { mapKeysToSettingValues } from "@/utils/detectSetting";
 import { notFound } from "next/navigation";
 import HeaderTopLeft from "./HeaderTopLeft";
 import HeaderTopRignt from "./HeaderTopRignt";
+import Flex from "@/components/ui/Flex";
 
 const keyTranslates = [...Object.values(translations.header.top)];
 
@@ -22,12 +23,12 @@ export default async function HeaderTop() {
 
 	const t = mapKeysToSettingValues(keyTranslates, data);
 	return (
-		<section className="bg-white  py-2 border-b border-b-colors-gray-2">
-			<div className="container flex ">
+		<section className="py-2 border-b border-b-colors-gray-2">
+			<Flex className="container" align="center">
 				<HeaderTopLeft
 					data={[t.header_top_left_1, t.header_top_left_2]}></HeaderTopLeft>
 				<HeaderTopRignt title={t.order_tracking} />
-			</div>
+			</Flex>
 		</section>
 	);
 }

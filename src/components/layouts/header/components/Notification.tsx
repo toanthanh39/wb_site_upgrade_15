@@ -24,13 +24,13 @@ export default function Notification({ className }: ComProps) {
 							Thông báo mới
 						</Text.p>
 						<Flex direction="col" gap={4} align="start">
-							{results.new.map((item) => {
+							{results.new.map((item, index) => {
 								return (
 									<LinkElement
 										key={item.id}
 										href={"/collections/" + item.collections?.[0]?.handle + ""}
 										prefetch={false}>
-										<Flex key={item.id} align="start" gap={4} justify="start">
+										<Flex key={index}>
 											<CustomImage
 												width={100}
 												height={100}
@@ -54,7 +54,7 @@ export default function Notification({ className }: ComProps) {
 										key={item.id}
 										href={"/collections/" + item.collections?.[0]?.handle + ""}
 										prefetch={false}>
-										<Flex key={item.id} align="start" gap={4} justify="start">
+										<Flex key={item.id} gap={4}>
 											<CustomImage
 												width={100}
 												height={100}

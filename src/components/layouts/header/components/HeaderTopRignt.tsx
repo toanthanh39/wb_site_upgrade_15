@@ -14,7 +14,7 @@ export default function HeaderTopRignt({ title }: Props) {
 
 	return (
 		<div className="w-1/2">
-			<Flex gap={2} justify="end">
+			<Flex gap={2} justify="end" align="center">
 				<Text.span className="cursor-pointer" onClick={toggle}>
 					{title}
 				</Text.span>

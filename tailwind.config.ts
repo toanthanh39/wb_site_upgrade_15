@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+	darkMode: "class",
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -44,16 +45,6 @@ export default {
 			},
 
 			keyframes: {
-				"modal-scale-in": {
-					"0%": { transform: "scale(0)" },
-					"75%": { transform: "scale(1.04)" },
-					"100%": { transform: "scale(1)" },
-				},
-				"modal-scale-out": {
-					"0%": { transform: "scale(1)" },
-					"100%": { transform: "scale(0)" },
-				},
-
 				"modal-up": {
 					"0%": { transform: "translate(-50%,-50%)", opacity: "1" },
 					"100%": { transform: "translate(-50% , -100%)", opacity: "0" },
@@ -72,11 +63,6 @@ export default {
 					"100%": { transform: "translate(-50% , -0%)", opacity: "0" },
 				},
 
-				tranX: {
-					"0%": { transform: "translateX(0px)" },
-					"100%": { transform: "translateX(-80%)" },
-				},
-
 				fade: {
 					"0%": { opacity: "0" },
 					"100%": { opacity: "1" },
@@ -84,6 +70,11 @@ export default {
 				fadeOut: {
 					"0%": { opacity: "1" },
 					"100%": { opacity: "0" },
+				},
+
+				fadeInUp: {
+					"0%": { opacity: "0", transform: "translateY(60px)" },
+					"100%": { opacity: "1", transform: "translateY(0)" },
 				},
 				"accordion-down": {
 					from: { height: "0" },
@@ -95,8 +86,6 @@ export default {
 				},
 			},
 			animation: {
-				"modal-scale-in": "modal-scale-in 0.3s ease-in-out forwards",
-				"modal-scale-out": "modal-scale-out 0.2s ease-in-out forwards",
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 				"modal-up": "modal-up 0.3s   ",
@@ -105,11 +94,18 @@ export default {
 				"drawer-down": "drawer-down 0.3s ",
 				fade: "fade 0.3s ease-in-out forwards",
 				fadeOut: "fadeOut 0.3s ease-in-out forwards",
-				tranX: "tranX 5s ease-in-out infinite",
+				fadeInUp: "fadeInUp 0.3s linear forwards",
 			},
 		},
 		container: {
 			center: true,
+			screens: {
+				sm: "640px",
+				md: "768px",
+				lg: "1024px",
+				xl: "1280px",
+				"2xl": "1280px", // Ghi đè giá trị cho '2xl'
+			},
 		},
 	},
 	plugins: [

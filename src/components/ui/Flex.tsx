@@ -27,14 +27,15 @@ const variants = cva("flex w-full", {
 			4: "gap-1",
 			8: "gap-2",
 			12: "gap-3",
+			16: "gap-4",
 			24: "gap-6",
 			32: "gap-8",
 		},
 	},
 	defaultVariants: {
 		direction: "row",
-		justify: "center",
-		align: "center",
+		justify: "start",
+		align: "start",
 	},
 });
 interface FlexProps

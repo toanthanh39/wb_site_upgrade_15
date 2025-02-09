@@ -1,6 +1,6 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
+import React, { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 
 export default function RootProvider({
@@ -15,6 +15,7 @@ export default function RootProvider({
 			},
 		},
 	});
+
 	return (
 		<React.Fragment>
 			<QueryClientProvider client={queryClient}>

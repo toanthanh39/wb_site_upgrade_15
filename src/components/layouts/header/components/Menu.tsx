@@ -8,6 +8,7 @@ import { getSettingServer } from "@/services/api/setting/server";
 import { HomeMenu } from "@/types/Header.type";
 import { detectTimeServer } from "@/utils/detectServer";
 import { checkActiveDate, cn } from "@/utils/utils";
+import { useId } from "react";
 
 async function getDataServer() {
 	const data = await getSettingServer<HomeMenu[]>(SettingConst.menu.menu_home);
@@ -19,7 +20,7 @@ export default async function Menu() {
 	const timeServer = await detectTimeServer();
 	return (
 		<nav
-			className="overflow-x-auto md:overflow-x-visible container hide-scroll-bar py-2 relative"
+			className="overflow-x-auto md:overflow-x-visible container hide-scroll-bar py-4 relative"
 			aria-label="Main Navigation">
 			<ul className="flex gap-4 md:gap-0 flex-nowrap whitespace-nowrap md:whitespace-normal relative">
 				{menus.map((item, index) => {
@@ -28,20 +29,22 @@ export default async function Menu() {
 						item.from_time,
 						item.to_time
 					);
-					const isEventLink = item.is_event ?? false;
+					const isEventLink = !!item.is_event;
 					const isSubmenu = !!item?.submenu;
 
 					if (!show) return null;
 					return (
 						<li key={index} className="flex-auto inline-block group">
 							<NavLink
-								variant={isEventLink && "primary"}
-								weight={isEventLink && "bold"}
+								variant={isEventLink ? "primary" : "default"}
+								weight={isEventLink ? "bold" : "default"}
 								href={item.link}
 								prefetch={true}>
 								{item.name}
 							</NavLink>
-							{isSubmenu && <SubMenu submenu={item.submenu}></SubMenu>}
+							{isSubmenu && (
+								<SubMenu key={index} submenu={item.submenu}></SubMenu>
+							)}
 						</li>
 					);
 				})}
@@ -90,18 +93,20 @@ const SubMenu = ({ submenu }: { submenu: HomeMenu["submenu"] }) => {
 			<Flex
 				className="basis-1/2"
 				direction="row"
-				gap={4}
+				gap={16}
 				align="start"
-				justify="start">
-				{submenu?.images.map((img) => {
-					<CustomImage
-						src={img.url}
-						alt={img.alt}
-						width={162}
-						height={162}
-						loading="lazy"
-						layout="responsive"
-					/>;
+				justify="end">
+				{submenu?.images.map((img, index) => {
+					return (
+						<CustomImage
+							key={index}
+							src={img.url}
+							alt={img.alt}
+							width={162}
+							height={162}
+							loading="lazy"
+						/>
+					);
 				})}
 			</Flex>
 		</Flex>

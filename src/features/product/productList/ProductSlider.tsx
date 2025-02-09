@@ -2,19 +2,31 @@
 
 import Slider from "@/components/widgets/Slider";
 import { ProductJson } from "@/types/Product.type";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import ProductCard from "./ProductCard";
+import { ComProps } from "@/types/Component";
+import { cn } from "@/utils/utils";
+import useIntersectionObserver from "@/lib/hooks/optimization/useIntersectionObserver";
 
-type Props = {
+type Props = ComProps & {
 	dataSource: ProductJson[];
 };
-export default function ProductSlider({ dataSource }: Props) {
+export default function ProductSlider({ dataSource, className }: Props) {
+	const { ref } = useIntersectionObserver({
+		processEntry: (entry) => {
+			entry.target.classList.add("active");
+		},
+		options: {
+			threshold: 0,
+		},
+	});
+
 	const render = (product: ProductJson) => {
 		return <ProductCard key={product.id} product={product}></ProductCard>;
 	};
 
 	return (
-		<aside>
+		<aside ref={ref} className={cn("p-c-init", className)}>
 			<Slider
 				dataSource={dataSource}
 				render={render}

@@ -17,16 +17,14 @@ async function customFunction() {
 			checkActiveDate(timeServer, i.from_time, i.to_time)
 		);
 	} catch (error) {
-		console.log("🚀 ~ customFunction ~ error:", error);
 		return [];
 	}
 }
 
 export default async function BannerHome() {
 	const data = await customFunction();
-	console.log("🚀 ~ BannerHome ~ data:", data);
 	return (
-		<section className="w-full relative">
+		<section className="w-full relative mx-auto max-w-[2500px] mb-6">
 			<BannerSlider dataSource={data}></BannerSlider>
 		</section>
 	);
