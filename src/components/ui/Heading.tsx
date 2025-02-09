@@ -10,6 +10,7 @@ const hVariants = cva("", {
 			secondary: "text-colors-gray-4",
 			link: "text-colors-blue-5 underline-offset-4 hover:underline",
 			productCollection: "text-colors-gray-5 md:font-noto px-4 md:px-0",
+			white: "text-whitesmoke",
 		},
 		size: {
 			h1: "text-3xl",

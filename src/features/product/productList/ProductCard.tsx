@@ -28,11 +28,22 @@ export default function ProductCard({ product }: Props) {
 					{product.brand?.title}
 				</LinkElement>
 
-				<Text.p variant="default" size="sm" className="line-clamp-2">
+				<Text.p
+					variant="default"
+					size="sm"
+					className="line-clamp-2 min-h-[35px]">
 					{product.full_name}
 				</Text.p>
 
 				<Money value={product.price}></Money>
+				{product.compare_at_price > product.price && (
+					<>
+						<Text.span className="mx-1" variant="primary">
+							-
+						</Text.span>
+						<Money value={product.compare_at_price}></Money>
+					</>
+				)}
 			</CardContent>
 
 			<CardBagde position="top_left">

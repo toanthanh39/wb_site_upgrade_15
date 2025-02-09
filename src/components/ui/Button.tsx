@@ -5,20 +5,23 @@ import { VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
 	{
+		// ring-colors-red-5 ring-1
 		variants: {
 			variant: {
 				default:
-					"bg-white text-colors-gray-5 hover:bg-colors-gray-5/90 hover:text-white",
-				destructive:
-					"bg-destructive text-destructive-foreground hover:bg-destructive/90",
+					"border border-input bg-whitesmoke hover:bg-colors-gray-5 hover:text-whitesmoke",
+				primary:
+					"bg-colors-red-5 text-whitesmoke hover:bg-white hover:text-colors-red-5 border border-colors-red-5",
+				primaryOuline:
+					"border border-colors-red-5 bg-white text-colors-red-5 hover:bg-colors-red-5 hover:text-whitesmoke",
 				outline:
-					"border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+					"border border-colors-gray-5 bg-white text-g hover:bg-colors-gray-5 hover:text-whitesmoke",
 				secondary:
 					"bg-secondary text-secondary-foreground hover:bg-secondary/80",
 				ghost: "hover:bg-accent hover:text-accent-foreground",
-				link: "text-primary underline-offset-4 hover:underline",
+				link: "bg-white text-colors-blue-5 border border-colors-blue-5 underline-offset-4 hover:underline hover:bg-colors-blue-5 hover:text-whitesmoke",
 			},
 			size: {
 				default: "h-10 px-4 py-2",

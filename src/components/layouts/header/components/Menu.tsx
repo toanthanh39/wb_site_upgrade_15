@@ -2,13 +2,13 @@ import { SettingConst } from "@/common/constants/setting";
 import NavLink from "@/components/composite/NavLink";
 import CustomImage from "@/components/ui/CustomImage";
 import Flex from "@/components/ui/Flex";
+import Grid from "@/components/ui/Grid";
 import Heading from "@/components/ui/Heading";
 import LinkElement from "@/components/ui/Link";
 import { getSettingServer } from "@/services/api/setting/server";
 import { HomeMenu } from "@/types/Header.type";
 import { detectTimeServer } from "@/utils/detectServer";
 import { checkActiveDate, cn } from "@/utils/utils";
-import { useId } from "react";
 
 async function getDataServer() {
 	const data = await getSettingServer<HomeMenu[]>(SettingConst.menu.menu_home);
@@ -58,9 +58,9 @@ const SubMenu = ({ submenu }: { submenu: HomeMenu["submenu"] }) => {
 		<Flex
 			justify="between"
 			align={"start"}
-			gap={2}
-			className="absolute top-full hidden left-0 w-full h-max z-10  group-hover:flex bg-white shadow-lg p-9">
-			<div className="basis-1/2 grid grid-cols-3 gap-2">
+			gap={4}
+			className="absolute top-full hidden left-0 w-full h-max z-10 p-9  group-hover:flex bg-white shadow-lg  ">
+			<div className="flex-1 basis-1/2  grid grid-cols-3 gap-2">
 				{submenu?.category.map((sub, index) => {
 					return (
 						<div
@@ -89,8 +89,26 @@ const SubMenu = ({ submenu }: { submenu: HomeMenu["submenu"] }) => {
 					);
 				})}
 			</div>
+			<Grid cols={3} className="flex-1 basis-1/2" gap={16}>
+				{submenu?.images.map((img, index) => {
+					return (
+						<div key={index} className="col-span-1 relative">
+							<CustomImage
+								key={index}
+								src={img.url}
+								alt={img.alt}
+								width={162}
+								height={162}
+								loading="lazy"
+								// className="max-w-[162px]"
+								layout="responsive"
+							/>
+						</div>
+					);
+				})}
+			</Grid>
 
-			<Flex
+			{/* <Flex
 				className="basis-1/2"
 				direction="row"
 				gap={16}
@@ -105,10 +123,12 @@ const SubMenu = ({ submenu }: { submenu: HomeMenu["submenu"] }) => {
 							width={162}
 							height={162}
 							loading="lazy"
+							className="max-w-[162px]"
+							layout="responsive"
 						/>
 					);
 				})}
-			</Flex>
+			</Flex> */}
 		</Flex>
 	);
 };

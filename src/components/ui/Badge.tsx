@@ -30,7 +30,7 @@ export default function Badge({
 }: BadgeProps) {
 	return (
 		<div className={cn(badgeVariants({ variant }), className)} {...props}>
-			<span className="absolute top-0 right-0 w-4 h-4 translate-x-1/4 -translate-y-1/4 text-xs flex items-center justify-center rounded-full bg-colors-red-5 text-white text-center">
+			<span className="absolute top-0 right-0 w-4 h-4 translate-x-1/4 -translate-y-1/4 text-xs flex items-center justify-center rounded-full bg-colors-red-5 text-whitesmoke text-center">
 				{count}
 			</span>
 			{children && children}

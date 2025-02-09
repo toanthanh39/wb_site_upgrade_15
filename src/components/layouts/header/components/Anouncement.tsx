@@ -24,7 +24,7 @@ export default async function Anouncement() {
 	const t = mapKeysToSettingValues(keyTranslates, data);
 
 	return (
-		<section className="bg-colors-red-5 py-1 text-white text-center hidden md:block">
+		<section className="bg-colors-red-5 py-1 text-whitesmoke text-center hidden md:block">
 			<Text.p variant="primaryReverse" className="inline mr-1">
 				{t.announcement_bar}
 			</Text.p>

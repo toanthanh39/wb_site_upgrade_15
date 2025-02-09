@@ -3,24 +3,17 @@ import { cva, VariantProps } from "class-variance-authority";
 import { DetailedHTMLProps } from "react";
 import { HTMLAttributes } from "react";
 
-const variants = cva("flex w-full", {
+const variants = cva("grid", {
 	variants: {
-		direction: {
-			row: "flex-row",
-			col: "flex-col",
+		cols: {
+			2: "grid-cols-2",
+			3: "grid-cols-3",
+			4: "grid-cols-4",
+			5: "grid-cols-5",
+			6: "grid-cols-6",
+			12: "grid-cols-12",
 		},
-		justify: {
-			center: "justify-center",
-			end: "justify-end",
-			start: "justify-start",
-			between: "justify-between",
-		},
-		align: {
-			center: "items-center",
-			start: "items-start",
-			end: "items-end",
-			between: "items-between",
-		},
+
 		gap: {
 			2: "gap-0.5",
 			4: "gap-1",
@@ -29,35 +22,29 @@ const variants = cva("flex w-full", {
 			16: "gap-4",
 			24: "gap-6",
 			32: "gap-8",
-			48: "gap-12",
 		},
 	},
 	defaultVariants: {
-		direction: "row",
+		cols: 2,
 		justify: "start",
 		align: "start",
-		gap: "",
 	},
 });
-interface FlexProps
+interface GridProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
 		VariantProps<typeof variants> {
 	children?: React.ReactNode;
 }
 
-export default function Flex({
+export default function Grid({
 	children,
 	className,
-	direction,
-	justify,
-	align,
+	cols,
 	gap,
 	...props
-}: FlexProps) {
+}: GridProps) {
 	return (
-		<div
-			className={cn(variants({ align, direction, justify, gap, className }))}
-			{...props}>
+		<div className={cn(variants({ cols, gap, className }))} {...props}>
 			{children}
 		</div>
 	);

@@ -30,7 +30,7 @@ export default function useIntersectionObserver({
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
-					processEntry(entry);
+					processEntry?.(entry);
 					// setCallback(entry);
 					observer.disconnect(); // Dừng theo dõi sau khi phần tử đã giao nhau
 				}

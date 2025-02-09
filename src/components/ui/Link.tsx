@@ -18,7 +18,7 @@ const linkVariants = cva("inline-block hover:text-colors-red-5", {
 			primary: "text-colors-red-5",
 			secondary: "text-colors-gray-4",
 			link: "text-colors-blue-5 underline-offset-4 hover:underline",
-			primaryReverse: "text-white",
+			primaryReverse: "text-whitesmoke",
 			active: "text-colors-red-5 font-bold",
 		},
 		size: {

@@ -8,7 +8,7 @@ const pVariants = cva("", {
 			secondary: "text-colors-gray-4",
 			primary: "text-colors-red-5",
 			link: "text-colors-blue-5 underline-offset-4 hover:underline",
-			primaryReverse: "text-white",
+			primaryReverse: "text-whitesmoke",
 		},
 		size: {
 			default: "text-base",
@@ -30,7 +30,7 @@ const smallVariants = cva("", {
 			primary: "text-colors-red-5",
 			secondary: "text-colors-gray-4",
 			link: "text-colors-blue-5 underline-offset-4 hover:underline",
-			primaryReverse: "text-white",
+			primaryReverse: "text-whitesmoke",
 		},
 		size: {
 			default: "text-[10px]",
@@ -50,7 +50,7 @@ const spanVariants = cva("inline-block", {
 			primary: "text-colors-red-5",
 			secondary: "text-colors-gray-4",
 			link: "text-colors-blue-5 underline-offset-4 hover:underline",
-			primaryReverse: "text-white",
+			primaryReverse: "text-whitesmoke",
 		},
 		size: {
 			default: "text-base",

@@ -8,6 +8,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import RootProvider from "@/lib/providers/RootProvider";
+import DevComponents from "@/features/dev/fixed/DevComponents";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -50,6 +51,7 @@ export default function RootLayout({
 			<body
 				className={`${inter.variable} ${notoSans.variable} ${notoSerifDisplay.variable} antialiased  font-inter w-screen overflow-x-hidden dark:bg-black`}>
 				<RootProvider>{children}</RootProvider>
+				<DevComponents />
 			</body>
 		</html>
 	);

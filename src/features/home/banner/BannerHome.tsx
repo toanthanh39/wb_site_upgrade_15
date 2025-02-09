@@ -24,7 +24,7 @@ async function customFunction() {
 export default async function BannerHome() {
 	const data = await customFunction();
 	return (
-		<section className="w-full relative mx-auto max-w-[2500px] mb-6">
+		<section className="w-full relative mx-auto max-w-[2500px] mb-6  ">
 			<BannerSlider dataSource={data}></BannerSlider>
 		</section>
 	);

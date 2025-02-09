@@ -3,8 +3,8 @@ import Image from "next/image";
 export interface CustomImageProps {
 	src: string;
 	alt: string;
-	width: number;
-	height: number;
+	width?: number;
+	height?: number;
 	layout?: "fixed" | "responsive" | "fill" | "intrinsic";
 	className?: string;
 	quality?: number | `${number}`;

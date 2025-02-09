@@ -34,7 +34,7 @@ export default async function ProductCollection({
 }: Props) {
 	const data = await getListProductServer();
 	return (
-		<section className={cn("relative w-full  ", className)}>
+		<section className={cn("relative w-full mb-2 ", className)}>
 			{title && link && (
 				<LinkElement href={link} className="mb-4">
 					<Heading className=" " level={1} variant="productCollection">
@@ -44,15 +44,9 @@ export default async function ProductCollection({
 			)}
 			<ProductSlider dataSource={data} />
 			{more && (
-				<Flex gap={2}>
-					<Button className="mx-auto block" variant="default">
-						{more.title}
-					</Button>
-
-					<Button className="mx-auto block" variant="outline">
-						{more.title}
-					</Button>
-				</Flex>
+				<Button className="mx-auto block" variant="default">
+					{more.title}
+				</Button>
 			)}
 		</section>
 	);

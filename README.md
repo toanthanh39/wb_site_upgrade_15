@@ -37,9 +37,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 # Next.js Project
 
-Đây là dự án được xây dựng bằng Next.js (v15)
+Đây là dự án được xây dựng bằng Next.js (v15) - app router , react (v19)
 Dự án xây dụng website bán hàng + POS
-Dự án này được xây dựng bằng các công nghệ hiện đại bao gồm:
+Dự án này được xây dựng bằng các công nghệ bao gồm:
 
 - **Next.js (v15)**: Framework React hỗ trợ SSR, SSG, và ISR.
 - **Tailwind CSS**: Utility-first CSS framework.
@@ -103,7 +103,7 @@ src/
 
 ```
 
-## Quy định cách code về style bằng Tailwind CSS
+## Quy định cách code về style bằng Tailwind CSS (7)
 
 Để đảm bảo tính nhất quán và dễ bảo trì, tất cả các component trong dự án phải tuân thủ các quy định sau khi sử dụng Tailwind CSS:
 
@@ -115,7 +115,7 @@ src/
 - **Colors**: Sử dụng các lớp màu theo đúng quy định trong bảng màu dưới đây.
 - **Flexbox và Grid**: Sử dụng các lớp như `flex`, `justify-between`, `items-center`, `grid`, `grid-cols-2`, v.v. để tạo layout.
 
-### . **Quy định về màu sắc (Color Palette)**
+### 2. **Quy định về màu sắc (Color Palette)**
 
 Tất cả các class liên quan đến màu sắc **bắt buộc phải sử dụng palette màu sau**:
 
@@ -137,23 +137,23 @@ colors: {
 }
 ```
 
-### 2. **Quy tắc đặt tên class**
+### 3. **Quy tắc đặt tên class**
 
 - Sắp xếp các lớp theo thứ tự: **Layout > Spacing > Typography > Colors > Others**.
 - Ví dụ:
   ```html
   <div
-  	class="flex justify-between items-center mt-4 p-6 bg-white rounded-lg shadow-md">
+  	class="flex justify-between items-center mt-4 p-6 text-sm bg-white rounded-lg shadow-md">
   	<p class="text-lg font-semibold text-gray-800">Hello, World!</p>
   </div>
   ```
 
-### 3. **Tách biệt logic và style**
+### 4. **Tách biệt logic và style**
 
 - Tránh viết inline style. Thay vào đó, sử dụng các utility classes của Tailwind CSS.
 - Nếu cần custom style phức tạp, tạo file CSS riêng và sử dụng `@apply` để kết hợp với Tailwind.
 
-### 4. **Responsive Design**
+### 5. **Responsive Design**
 
 - Sử dụng các prefix responsive của Tailwind như `sm:`, `md:`, `lg:`, `xl:` để đảm bảo giao diện hiển thị tốt trên mọi thiết bị.
 - Ví dụ:
@@ -163,18 +163,18 @@ colors: {
   </div>
   ```
 
-### 5. **Dark Mode**
+### 6. **Dark Mode**
 
 - Sử dụng lớp `dark:` để áp dụng style cho chế độ tối.
 - Ví dụ:
   ```html
   <div
-  	class="bg-white dark:bg-colors-gray-5 text-colors-gray-5 dark:text-white">
+  	class="bg-white dark:bg-colors-gray-5 text-colors-gray-5 dark:text-whitesmoke">
   	<!-- Content -->
   </div>
   ```
 
-### 6. **Customizing Tailwind**
+### 7. **Customizing Tailwind**
 
 - Nếu cần thay đổi hoặc thêm các utility classes, chỉnh sửa file `tailwind.config.js`.
 - Ví dụ:

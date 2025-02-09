@@ -11,4 +11,10 @@ export const SettingConst = {
 	menu: {
 		menu_home: "menu_home",
 	},
+	footer: {
+		footer_menu: "footer_menu",
+		footer_bottom: "footer_bottom",
+		footer_slogan_1: "footer_slogan_1",
+		footer_slogan_2: "footer_slogan_2",
+	},
 } as const;

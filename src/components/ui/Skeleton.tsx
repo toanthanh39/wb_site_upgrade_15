@@ -6,7 +6,7 @@ const skeletonVariants = cva("relative", {
 	variants: {
 		variant: {
 			default:
-				"animate-pulse border-[1px] border-gray-200 bg-gray-200 w-full h-2 rounded",
+				"animate-pulse border-[1px] border-gray-200 bg-gray-200 w-full h-2 rounded-sm",
 		},
 		size: {
 			default: "h-5 ",

@@ -1,9 +1,10 @@
+import { initSiteSetting } from "@/config/middleware";
 import { headers } from "next/headers";
 import { type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
 	const _header = await headers();
-
+	return await initSiteSetting(request);
 }
 
 export const config = {
