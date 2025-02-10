@@ -9,7 +9,7 @@ type Props = {
 };
 export default function BannerItem({ data }: Props) {
 	return (
-		<LinkElement href={data.link} key={data.id}>
+		<LinkElement className="block" href={data.link} key={data.id}>
 			{/* <picture>
 				<source
 					media="(max-width:767px)"
