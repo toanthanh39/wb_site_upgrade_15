@@ -1,24 +1,45 @@
+import React from "react";
+import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/utils";
-import * as React from "react";
+import Flex from "./Flex";
 
-export interface InputProps
-	extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-	({ className, type, ...props }, ref) => {
-		return (
-			<input
-				type={type}
-				className={cn(
-					"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-					className
-				)}
-				ref={ref}
-				{...props}
-			/>
-		);
+const inputVariants = cva(
+	"h-full py-1 px-3 rounded-sm text-center relative max-w-[380px]",
+	{
+		variants: {
+			variant: {
+				default: "border-none",
+				border: "border border-gray-300",
+				line: "border border-gray-300 rounded-md",
+			},
+			size: {
+				default: "text-sm",
+				lg: "",
+				sm: "",
+			},
+		},
+		defaultVariants: {
+			variant: "default",
+			size: "default",
+		},
 	}
 );
-Input.displayName = "Input";
 
-export { Input };
+interface InputProps
+	extends React.InputHTMLAttributes<HTMLInputElement>,
+		VariantProps<typeof inputVariants> {
+	icon?: React.ReactNode;
+}
+
+export default function Input(props: InputProps) {
+	const { variant, size, className, icon, ...prop } = props;
+	return (
+		<Flex className={cn(inputVariants({ variant, size, className }))}>
+			{icon && icon}
+			<input
+				{...prop}
+				className="flex-1 outline-none h-full w-full border-none py-1"
+			/>
+		</Flex>
+	);
+}

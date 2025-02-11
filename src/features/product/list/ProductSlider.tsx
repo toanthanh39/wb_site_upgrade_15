@@ -1,13 +1,32 @@
 "use client";
 
-import Slider from "@/components/widgets/Slider";
+// import Slider from "@/components/widgets/Slider";
 import { ProductJson } from "@/types/Product.type";
-import { useCallback, useEffect, useRef } from "react";
 import ProductCard from "./ProductCard";
 import { ComProps } from "@/types/Component";
 import { cn } from "@/utils/utils";
 import useIntersectionObserver from "@/lib/hooks/optimization/useIntersectionObserver";
-
+import dynamic from "next/dynamic";
+import ProductListSkeleton, {
+	ProductSkeletonType,
+} from "./ProductListSkeleton";
+const SliderDynamic = dynamic(
+	() =>
+		import("@/components/widgets/Slider").then((mod) => ({
+			default: mod.default,
+		})),
+	{
+		ssr: false,
+		loading(loadingProps) {
+			return (
+				<ProductListSkeleton
+					className="mb-2 md:mb-4 relative block"
+					type={ProductSkeletonType.list}
+				/>
+			);
+		},
+	}
+);
 type Props = ComProps & {
 	dataSource: ProductJson[];
 };
@@ -26,8 +45,10 @@ export default function ProductSlider({ dataSource, className }: Props) {
 	};
 
 	return (
-		<aside ref={ref} className={cn("p-c-init", className)}>
-			<Slider
+		<aside className={cn("", className)}>
+			<SliderDynamic
+				className="p-c-init"
+				useAnimation
 				dataSource={dataSource}
 				render={render}
 				pagination={false}

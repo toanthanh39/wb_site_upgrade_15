@@ -1,7 +1,7 @@
 import { SettingConst } from "@/common/constants/setting";
 import Flex from "@/components/ui/Flex";
-import { ProductCollection } from "@/features/product/productList";
-import ProductListSkeleton from "@/features/product/productList/ProductListSkeleton";
+import { ProductCollection } from "@/features/product/list";
+import ProductListSkeleton from "@/features/product/list/ProductListSkeleton";
 import { getMultiSettingServer } from "@/services/api/setting/server";
 import { SectionJson } from "@/types/Home.type";
 import { detectTimeServer } from "@/utils/detectServer";

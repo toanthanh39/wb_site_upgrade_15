@@ -20,6 +20,7 @@ export default function BrandSlider({ dataSource, className }: Props) {
 					height={item.height}
 					loading="eager"
 					alt={item.alt}
+					priority
 					layout="responsive"></CustomImage>
 			</LinkElement>
 		);

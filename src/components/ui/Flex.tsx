@@ -22,6 +22,7 @@ const variants = cva("flex w-full", {
 			between: "items-between",
 		},
 		gap: {
+			0: "",
 			2: "gap-0.5",
 			4: "gap-1",
 			8: "gap-2",
@@ -36,7 +37,7 @@ const variants = cva("flex w-full", {
 		direction: "row",
 		justify: "start",
 		align: "start",
-		gap: "",
+		gap: 0,
 	},
 });
 interface FlexProps

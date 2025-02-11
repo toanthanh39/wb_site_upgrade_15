@@ -19,7 +19,7 @@ export default {
 			colors: {
 				background: "var(--background)",
 				foreground: "var(--foreground)",
-				whitesmoke: "#ededed",
+				whitesmoke: "#fff",
 				colors: {
 					gray: {
 						1: "#f6e9e9",

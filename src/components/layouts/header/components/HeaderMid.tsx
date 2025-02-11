@@ -1,9 +1,14 @@
+import Flex from "@/components/ui/Flex";
+import HeaderSearch from "./HeaderSearch";
 import Namperfume from "./Namperfume";
+import TotalStore from "@/features/store/infor/TotalStore";
 
 export default function HeaderMid() {
 	return (
-		<section className="container py-2">
+		<Flex className="container py-2" align="center" gap={32}>
 			<Namperfume />
-		</section>
+			<HeaderSearch />
+			<TotalStore />
+		</Flex>
 	);
 }

@@ -1,6 +1,6 @@
 "use client";
 import Helper from "@/utils/helper";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Ref, useEffect, useMemo, useRef, useState } from "react";
 
 type IntersectionObserverInit = {
 	root?: Element | null;
@@ -11,12 +11,14 @@ type IntersectionObserverInit = {
 type Props = {
 	processEntry?: (entry: IntersectionObserverEntry) => void;
 	options?: IntersectionObserverInit;
+	enable?: boolean;
 };
 export default function useIntersectionObserver({
 	options = {},
+	enable = true,
 	processEntry,
 }: Props) {
-	const ref = useRef<HTMLElement>(null);
+	const ref = useRef<HTMLElement | HTMLDivElement | any>(null);
 	const callbackRef = useRef<(entry: any) => void>(() => {});
 	const setCallback = (
 		callback: (entry: IntersectionObserverEntry) => void
@@ -25,7 +27,7 @@ export default function useIntersectionObserver({
 	};
 
 	useEffect(() => {
-		// if (!Helper.isServer()) return;
+		if (!enable) return;
 
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -47,7 +49,7 @@ export default function useIntersectionObserver({
 				observer.unobserve(ref.current);
 			}
 		};
-	}, []);
+	}, [enable]);
 
 	return { ref, setCallback } as const;
 }

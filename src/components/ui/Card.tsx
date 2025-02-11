@@ -3,6 +3,7 @@ import CustomImage from "./CustomImage";
 import { CustomImageProps } from "./CustomImage";
 import { cn } from "@/utils/utils";
 import Skeleton from "./Skeleton";
+import { imageConst } from "@/common/constants/image";
 
 const Card = ({
 	className,
@@ -18,7 +19,13 @@ interface CardImageProps
 		"alt" | "src" | "width" | "className" | "height" | "layout"
 	> {}
 const CardImage = ({ className, ...props }: CardImageProps) => (
-	<CustomImage className={cn("", className)} {...props} loading="lazy" />
+	<CustomImage
+		className={cn("", className)}
+		{...props}
+		loading="lazy"
+		placeholder="blur"
+		blurDataURL={imageConst.blur_url}
+	/>
 );
 CardImage.displayName = "CardImage";
 
@@ -63,8 +70,9 @@ const CardSkeleton = ({
 	...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div className={cn("", className)} {...props}>
-		<Skeleton className="h-[160px]"></Skeleton>
+		<Skeleton className="h-[183px] md:h-[176px]"></Skeleton>
 		<Skeleton className="h-5 mt-2"></Skeleton>
+		<Skeleton className="h-3 w-2/3 mt-1"></Skeleton>
 		<Skeleton className="h-3 w-1/2 mt-1"></Skeleton>
 	</div>
 );

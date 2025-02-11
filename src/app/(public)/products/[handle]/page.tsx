@@ -1,6 +1,6 @@
 import Main from "@/components/layouts/main";
 import Flex from "@/components/ui/Flex";
-import { ProductAction, ProductInfor } from "@/features/product/productDetail";
+import { ProductAction, ProductInfor } from "@/features/product/detail";
 import { getProductsServer } from "@/services/api/product/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";

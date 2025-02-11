@@ -1,3 +1,4 @@
+import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
 export interface CustomImageProps {
@@ -10,6 +11,10 @@ export interface CustomImageProps {
 	quality?: number | `${number}`;
 	priority?: boolean;
 	loading?: "eager" | "lazy";
+	placeholder?: PlaceholderValue;
+	blurDataURL?: string;
+	objectFit?: string;
+	objectPosition?: string;
 }
 
 const getValidSrc = (src: string, defaultImage: any) => {

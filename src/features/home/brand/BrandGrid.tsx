@@ -39,6 +39,7 @@ export default function BrandGrid({ className, dataSource }: Props) {
 								width={6.12}
 								height={2.88}
 								loading="eager"
+								priority
 								layout="responsive"></CustomImage>
 						</picture>
 					</LinkElement>

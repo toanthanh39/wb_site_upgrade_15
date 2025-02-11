@@ -69,7 +69,7 @@ export default async function Footer() {
 		<footer className="bg-colors-gray-5 h-full w-screen py-10 mt-4">
 			{dataFooter && (
 				<section className="container text-whitesmoke ">
-					<Flex gap={32}>
+					<Flex gap={32} className="flex-col md:flex-row">
 						{dataFooter.value.map((section, index) => {
 							return (
 								<div className="flex-auto" key={index}>

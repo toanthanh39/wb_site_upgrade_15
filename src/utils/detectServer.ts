@@ -7,9 +7,12 @@ export const i18n = {
 } as const;
 
 export async function detectLangForServer() {
-	const _headers = await headers();
-
-	return (_headers.get("lang") as Locale) || i18n.defaultLocale;
+	try {
+		const _headers = await headers();
+		return (_headers.get("lang") as Locale) || i18n.defaultLocale;
+	} catch (error) {
+		return i18n.defaultLocale;
+	}
 }
 
 export async function detectTimeServer() {

@@ -14,6 +14,7 @@ interface Options {
 const mergeConfig = (config?: RequestInit): RequestInit => {
 	return {
 		...config,
+
 		headers: {
 			"Cache-Control": "public, max-age=60",
 			...config?.headers,
@@ -85,7 +86,7 @@ server.get = async <T>(url: string, config?: Config): Promise<T> => {
 	const response = await server<T>({
 		url: url,
 		method: "GET",
-		config: mergeConfig(config),
+		config: config,
 	});
 
 	return response;
@@ -100,7 +101,7 @@ server.post = async <T>(
 		url: url,
 		method: "POST",
 		config: {
-			...mergeConfig(config),
+			...config,
 			body: JSON.stringify(data),
 		},
 	});
@@ -116,7 +117,7 @@ server.put = async <T>(
 		url: url,
 		method: "PUT",
 		config: {
-			...mergeConfig(config),
+			...config,
 			body: JSON.stringify(data),
 		},
 	});
@@ -127,7 +128,7 @@ server.delete = async <T>(url: string, config?: RequestInit): Promise<T> => {
 	const response = await server<T>({
 		url: url,
 		method: "DELETE",
-		config: mergeConfig(config),
+		config: config,
 	});
 	return response;
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import { imageConst } from "@/common/constants/image";
 import CustomImage from "@/components/ui/CustomImage";
 import LinkElement from "@/components/ui/Link";
 import { BannerHomeData } from "@/types/Home.type";
@@ -9,7 +10,7 @@ type Props = {
 };
 export default function BannerItem({ data }: Props) {
 	return (
-		<LinkElement className="block" href={data.link} key={data.id}>
+		<LinkElement className="" href={data.link} key={data.id} prefetch={true}>
 			{/* <picture>
 				<source
 					media="(max-width:767px)"
@@ -30,9 +31,12 @@ export default function BannerItem({ data }: Props) {
 				alt={data.alt}
 				src={data.image_mobile}
 				loading="eager"
-				height={1}
-				width={1}
-				layout="responsive"></CustomImage>
+				height={414}
+				width={414}
+				layout="responsive"
+				placeholder="blur"
+				priority
+				blurDataURL={imageConst.blur_url}></CustomImage>
 			<CustomImage
 				className="hidden md:block"
 				alt={data.alt}
@@ -40,6 +44,9 @@ export default function BannerItem({ data }: Props) {
 				loading="eager"
 				height={52}
 				width={100}
+				placeholder="blur"
+				priority
+				blurDataURL={imageConst.blur_url}
 				layout="responsive"></CustomImage>
 		</LinkElement>
 	);

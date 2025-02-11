@@ -1,6 +1,7 @@
 // components/Slider.js
 
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 
 import "swiper/css/pagination";
@@ -21,22 +22,40 @@ import {
 	A11y,
 	FreeMode,
 	Autoplay,
+	EffectFade,
 } from "swiper/modules";
 import { SwiperProps } from "swiper/react";
 import { JSX } from "react";
+import dynamic from "next/dynamic";
+import useIntersectionObserver from "@/lib/hooks/optimization/useIntersectionObserver";
 
-type SliderProps<D> = SwiperProps & {
-	dataSource: D[];
-	render: (item: D, index: number) => React.ReactNode | JSX.Element;
+type SliderProps = SwiperProps & {
+	dataSource: any[];
+	useAnimation?: boolean;
+	render: (item: any, index: number) => React.ReactNode | JSX.Element;
 };
 
 export default function Slider<D>({
 	dataSource,
+	useAnimation,
+	className,
 	render,
 	...props
-}: SliderProps<D>) {
+}: SliderProps) {
+	const { ref } = useIntersectionObserver({
+		processEntry: (entry) => {
+			entry.target.classList.add("active");
+		},
+		options: {
+			threshold: 0,
+		},
+		enable: !!useAnimation,
+	});
+
 	return (
 		<Swiper
+			ref={ref}
+			className={className}
 			modules={[
 				Pagination,
 				Navigation,
@@ -48,6 +67,7 @@ export default function Slider<D>({
 				A11y,
 				FreeMode,
 				Autoplay,
+				EffectFade,
 			]}
 			pagination={{ clickable: true }}
 			// onSlideChange={() => console.log("slide change")}

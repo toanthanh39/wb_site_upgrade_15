@@ -15,6 +15,7 @@ const variants = cva("grid", {
 		},
 
 		gap: {
+			0: "",
 			2: "gap-0.5",
 			4: "gap-1",
 			8: "gap-2",
@@ -26,8 +27,7 @@ const variants = cva("grid", {
 	},
 	defaultVariants: {
 		cols: 2,
-		justify: "start",
-		align: "start",
+		gap: 0,
 	},
 });
 interface GridProps
